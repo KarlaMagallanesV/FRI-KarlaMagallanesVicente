@@ -1,0 +1,15 @@
+package pe.edu.vallegrande.ms_pedidos.application.port.out;
+
+import org.springframework.stereotype.Repository;
+
+import pe.edu.vallegrande.ms_pedidos.domain.model.Pedido;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Repository
+public interface IPedidoRepositoryPort {
+
+    Flux<Pedido> findAll();
+    Mono<Pedido> findById(Long id);
+    Mono<Pedido> save(Pedido order);
+}
