@@ -18,12 +18,13 @@ public class ProductoService implements IProductoServicePort {
 
     @Override
     public Flux<Producto> findAll() {
-        return null;
+        return repositoryPort.findAllActive();
     }
 
     @Override
     public Mono<Producto> findById(Long id) {
-        return null;
+        return repositoryPort.findById(id)
+                .switchIfEmpty(Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Producto no encontrado")));
     }
 
     @Override

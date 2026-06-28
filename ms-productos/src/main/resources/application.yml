@@ -1,10 +1,16 @@
 server:
-  port: ${SERVER_PORT:8081}
+  port: 8081
 
 spring:
   application:
     name: ms-productos
   r2dbc:
-    url: r2dbc:postgresql://${DB_HOST:ep-wandering-flower-atr9nncx-pooler.c-9.us-east-1.aws.neon.tech}:${DB_PORT:5432}/${DB_NAME:productos}?sslMode=${DB_SSL_MODE:require}&channel_binding=require
-    username: ${DB_USER:neondb_owner}
-    password: ${DB_PASSWORD:npg_tIe3BA1RvkJo}
+    url: r2dbc:postgresql://ep-wandering-flower-atr9nncx-pooler.c-9.us-east-1.aws.neon.tech:5432/productos?sslMode=require&channel_binding=require
+    username: neondb_owner
+    password: npg_tIe3BA1RvkJo
+    pool:
+      enabled: true
+      initial-size: 1
+      max-size: 5
+      max-idle-time: 10m
+      validation-query: SELECT 1

@@ -1,0 +1,6 @@
+# kubectl create namespace ms-producto-namespace (COMANDO)
+# kubectl apply -f ms-producto-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ms-producto-namespace

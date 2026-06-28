@@ -8,6 +8,12 @@ spring:
     url: r2dbc:postgresql://${DB_HOST:ep-wandering-flower-atr9nncx-pooler.c-9.us-east-1.aws.neon.tech}/${DB_NAME:pedidos}?sslMode=${DB_SSL_MODE:require}
     username: ${DB_USER:neondb_owner}
     password: ${DB_PASSWORD:npg_tIe3BA1RvkJo}
+    pool:
+      enabled: true
+      initial-size: 1
+      max-size: 5
+      max-idle-time: 10m
+      validation-query: SELECT 1
 
 servicios:
   productos-url: ${PRODUCTOS_SERVICE_URL:http://localhost:8081}

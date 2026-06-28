@@ -1,0 +1,25 @@
+# kubectl apply -f ms-producto-deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-producto-deployment
+  namespace: ms-producto-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-producto
+  template:
+    metadata:
+      labels:
+        app: ms-producto
+    spec:
+      containers:
+      - name: ms-producto-container
+        image: anyeli/ms-productos:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8081
+        envFrom:
+        - secretRef:
+            name: ms-producto-secret           # carga DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, DB_SSL_MODE, SERVER_PORT

@@ -1,0 +1,6 @@
+# kubectl create namespace ms-pedido-namespace (COMANDO)
+# kubectl apply -f ms-pedido-namespace.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ms-pedido-namespace
